@@ -1,9 +1,41 @@
+import { useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Contact.module.css";
 
-export default function Contact() {
+export const getStaticProps = async () => {
+    const res = await fetch("http://localhost:3000/allContent");
+    const data = await res.json();
+    console.log(data);
+    return {
+        props: { content: data },
+    };
+};
+
+export default function Contact({ content }) {
+    const [form, setForm] = useState({
+        first_name: "",
+        last_name: "",
+        title: "",
+        email: "",
+        message: "",
+    });
     const onSubmitHandler = (e) => {
         e.preventDefault();
+        fetch("http://localhost:3000/contact_form", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(form),
+        });
+        setForm((prev) => ({
+            ...prev,
+            first_name: "",
+            last_name: "",
+            title: "",
+            email: "",
+            message: "",
+        }));
     };
 
     return (
@@ -24,15 +56,19 @@ export default function Contact() {
                                 One
                             </h1>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do dos eiusmod tempor
-                                incididunt ut labore et trace dolore magna
-                                aliqua.
+                                {
+                                    content.filter(
+                                        (words) => words.name == "contact_top"
+                                    )[0].content
+                                }
                             </p>
                             <p>
-                                Proin sagittis nisl rhoncus mattic rhoncus. At
-                                augue eget arcu dictum varius duis at
-                                consectetur lorem.
+                                {
+                                    content.filter(
+                                        (words) =>
+                                            words.name == "contact_bottom"
+                                    )[0].content
+                                }
                             </p>
                         </div>
                         <div className="col-md-2"></div>
@@ -51,14 +87,13 @@ export default function Contact() {
                                             className={styles.inputs}
                                             type="text"
                                             placeholder="First Name"
-                                            onInvalid={(e) =>
-                                                e.target.setCustomValidity(
-                                                    "Required"
-                                                )
+                                            onChange={(e) =>
+                                                setForm((prev) => ({
+                                                    ...prev,
+                                                    first_name: e.target.value,
+                                                }))
                                             }
-                                            onInput={(e) =>
-                                                e.target.setCustomValidity("")
-                                            }
+                                            value={form.first_name}
                                         />
                                     </div>
                                     <div className="col-md-6">
@@ -66,6 +101,13 @@ export default function Contact() {
                                             className={styles.inputs}
                                             type="text"
                                             placeholder="Last Name"
+                                            onChange={(e) =>
+                                                setForm((prev) => ({
+                                                    ...prev,
+                                                    last_name: e.target.value,
+                                                }))
+                                            }
+                                            value={form.last_name}
                                         />
                                     </div>
                                 </div>
@@ -75,6 +117,13 @@ export default function Contact() {
                                             className={styles.inputs}
                                             type="text"
                                             placeholder="Title"
+                                            onChange={(e) =>
+                                                setForm((prev) => ({
+                                                    ...prev,
+                                                    title: e.target.value,
+                                                }))
+                                            }
+                                            value={form.title}
                                         />
                                     </div>
                                     <div className="col-md-6">
@@ -82,7 +131,13 @@ export default function Contact() {
                                             className={styles.inputs}
                                             type="email"
                                             placeholder="Email"
-                                            required
+                                            onChange={(e) =>
+                                                setForm((prev) => ({
+                                                    ...prev,
+                                                    email: e.target.value,
+                                                }))
+                                            }
+                                            value={form.email}
                                         />
                                     </div>
                                 </div>
@@ -91,6 +146,13 @@ export default function Contact() {
                                         <textarea
                                             className={styles.textArea}
                                             placeholder="Message"
+                                            onChange={(e) =>
+                                                setForm((prev) => ({
+                                                    ...prev,
+                                                    message: e.target.value,
+                                                }))
+                                            }
+                                            value={form.message}
                                         ></textarea>
                                     </div>
                                 </div>

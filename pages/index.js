@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +8,16 @@ import shield from "../assets/Shield.png";
 import toast from "react-simple-toasts";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+export const getStaticProps = async () => {
+    const res = await fetch("http://localhost:3000/allContent");
+    const data = await res.json();
+
+    return {
+        props: { content: data },
+    };
+};
+
+export default function Home({ content }) {
     let nameObjects = [
         {
             one: "Matt Johnson",
@@ -25,22 +34,26 @@ export default function Home() {
     ];
 
     const [puzzleRes, setPuzzleRes] = useState([]);
+
+    useEffect(() => {});
+
     const showPuzzleResults = () => {
-        let distinctNames = [];
-        Object.keys(nameObjects[0]).forEach((key) => {
-            if (nameObjects[0][key] == nameObjects[1][key]) {
-                distinctNames.push(nameObjects[0][key]);
-            }
+        if (puzzleRes.length <= 0) {
+            let distinctNames = [];
+            Object.keys(nameObjects[0]).forEach((key) => {
+                if (nameObjects[0][key] == nameObjects[1][key]) {
+                    distinctNames.push(nameObjects[0][key]);
+                }
 
-            if (nameObjects[0][key] != nameObjects[1][key]) {
-                distinctNames.push(nameObjects[0][key]);
-                distinctNames.push(nameObjects[1][key]);
-            }
-        });
-
-        puzzleRes.length > 0
-            ? toast("Results are already displayed!")
-            : setPuzzleRes(distinctNames);
+                if (nameObjects[0][key] != nameObjects[1][key]) {
+                    distinctNames.push(nameObjects[0][key]);
+                    distinctNames.push(nameObjects[1][key]);
+                }
+            });
+            setPuzzleRes(distinctNames);
+            return;
+        }
+        toast("Results are already displayed!");
     };
 
     return (
@@ -56,8 +69,10 @@ export default function Home() {
                     </div>
                     <h2>Heading Two</h2>
                     <p>
-                        Integer accumsan moleste nisl, id faucibus urna accumsan
-                        quis. Proin vulputate, mauris semper maximus.
+                        {
+                            content.filter((words) => words.name == "radio")[0]
+                                .content
+                        }
                     </p>
                     <button className="btn rounded-0">Learn more</button>
                 </div>
@@ -68,8 +83,10 @@ export default function Home() {
                     </div>
                     <h2>Heading Two</h2>
                     <p>
-                        Integer accumsan moleste nisl, id faucibus urna accumsan
-                        quis. Proin vulputate, mauris semper maximus.
+                        {
+                            content.filter((words) => words.name == "rabbit")[0]
+                                .content
+                        }
                     </p>
                     <button className="btn rounded-0">Learn more</button>
                 </div>
@@ -80,8 +97,10 @@ export default function Home() {
                     </div>
                     <h2>Heading Two</h2>
                     <p>
-                        Integer accumsan moleste nisl, id faucibus urna accumsan
-                        quis. Proin vulputate, mauris semper maximus.
+                        {
+                            content.filter((words) => words.name == "shield")[0]
+                                .content
+                        }
                     </p>
                     <button className="btn rounded-0">Learn more</button>
                 </div>
@@ -96,7 +115,7 @@ export default function Home() {
                     readme), add the results to an array and output the list of
                     distinct names in an unordered list below this paragraph
                     when{" "}
-                    <Link href="" className={styles.link}>
+                    <Link href="#" className={styles.link}>
                         <a onClick={() => showPuzzleResults()}>this link</a>
                     </Link>{" "}
                     is clicked. If the operation has been completed already,
