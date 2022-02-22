@@ -1,116 +1,116 @@
 .container {
-  background-color: #222222;
-  height: 100%;
-  padding: 130px 87px 0 91px;
+    background-color: #222222;
+    height: 100%;
+    padding: 130px 87px 0 91px;
 }
 
 .infoBox {
-  display: inline-block;
-  width: 517px !important;
-  height: 442px !important;
-  background-color: white;
-  vertical-align: top;
-  border-radius: 3px;
-  text-align: center;
-  padding: 40px 72px 0 72px;
-  flex: 0.3;
+    display: inline-block;
+    width: 517px !important;
+    height: 442px !important;
+    background-color: white;
+    vertical-align: top;
+    border-radius: 3px;
+    text-align: center;
+    padding: 40px 72px 0 72px;
+    flex: 0.3;
 }
 
 .infoBox p,
 .infoBox h2 {
-  text-align: left;
+    text-align: left;
 }
 
 .infoBox h2 {
-  font-size: 45px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  margin-bottom: 20px;
+    font-size: 45px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .infoBox p {
-  font-size: 17px;
-  margin-top: 5px;
-  color: #858585;
-  margin-bottom: 20px;
-  text-align: justify;
+    font-size: 17px;
+    margin-top: 5px;
+    color: #858585;
+    margin-bottom: 20px;
+    text-align: justify;
 }
 
 .infoBox:nth-child(1) h2,
 .infoBox:nth-child(3) h2 {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 .infoBox:nth-child(2) {
-  padding-top: 60px;
+    padding-top: 60px;
 }
 
 .boxImg {
-  min-height: 112px;
+    min-height: 112px;
 }
 
 .h1UnderLine {
-  border-bottom: 3px solid #debf79;
+    border-bottom: 3px solid #debf79;
 }
 
 .footerRow {
-  margin-top: 50px;
-  color: white;
-  font-family: "Poppins", sans-serif;
-  text-align: justify;
+    margin-top: 50px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-align: justify;
 }
 
 .footerRow h1 {
-  font-size: 55px;
-  font-weight: 700;
-  margin-bottom: 40px;
+    font-size: 55px;
+    font-weight: 700;
+    margin-bottom: 40px;
 }
 
 .footerRow a {
-  color: #debf79;
+    color: #debf79;
 }
 
 .mainContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 992px) {
-  .container {
-    padding: 0;
-  }
-  .mainContainer {
-    justify-content: space-around;
-    gap: 10px;
-    flex-direction: column;
-  }
-  .infoBox {
-    flex: 0.9;
-    margin: 0 auto;
-    padding: 40px 57px;
-    width: 373px !important;
-  }
-  .btn {
-    font-weight: 300;
-    font-size: 0.8rem;
-  }
-  .infoBox p {
-    font-size: 12px;
-  }
-  .infoBox h2 {
-    font-size: 33px;
-  }
+    .container {
+        padding: 0;
+    }
+    .mainContainer {
+        justify-content: space-around;
+        gap: 10px;
+        flex-direction: column;
+    }
+    .infoBox {
+        flex: 0.9;
+        margin: 0 auto;
+        padding: 40px 57px;
+        width: 373px !important;
+    }
+    .btn {
+        font-weight: 300;
+        font-size: 0.8rem;
+    }
+    .infoBox p {
+        font-size: 12px;
+    }
+    .infoBox h2 {
+        font-size: 33px;
+    }
 
-  .footerRow {
-    padding: 5px 38px;
-  }
+    .footerRow {
+        padding: 5px 38px;
+    }
 
-  .footerRow h1 {
-    font-size: 42px;
-    margin-bottom: 30px;
-  }
+    .footerRow h1 {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
 
-  .footerRow p {
-    overflow-wrap: break-word;
-  }
+    .footerRow p {
+        overflow-wrap: break-word;
+    }
 }
