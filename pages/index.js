@@ -67,7 +67,10 @@ export default function Home() {
                         <Image src={rabbit} alt="rabbit" />
                     </div>
                     <h2>Heading Two</h2>
-                    <p>Lo</p>
+                    <p>
+                        Integer accumsan moleste nisl, id faucibus urna accumsan
+                        quis. Proin vulputate, mauris semper maximus.
+                    </p>
                     <button className="btn rounded-0">Learn more</button>
                 </div>
 
