@@ -1,9 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap");
+
 html,
-body {
+body,
+body > div:first-child,
+div#__next,
+div#__next > div {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  width: 100%;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  background-color: #222222;
 }
 
 a {
@@ -13,4 +20,87 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.gold {
+  color: #debf79;
+}
+
+nav {
+  padding: 30px 75px 0 75px !important;
+}
+
+button {
+  background-color: #debf79 !important;
+  padding: 7px 23px !important;
+}
+
+.contact h1,
+.contact h2,
+.navbar-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+.contact p,
+.contact button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.contact p {
+  text-align: justify;
+}
+
+.contact-words {
+  padding: 35px 35px 40px;
+}
+.bg-white {
+  padding-top: 30px;
+}
+
+.contact button {
+  font-size: 13px;
+  padding: 12px 38px !important;
+}
+
+@media screen and (max-width: 992px) {
+  nav {
+    padding: 0 !important;
+  }
+  .navbar {
+    flex-wrap: nowrap;
+  }
+  .navbar-brand {
+    width: 50%;
+  }
+
+  .fixed-top {
+    position: unset;
+  }
+
+  .gold {
+    text-decoration: none;
+  }
+
+  .contact p {
+    font-size: 14px;
+  }
+
+  .contact h1 {
+    font-size: 48px;
+  }
+
+  .contact h2 {
+    font-size: 30px;
+  }
+
+  .contact span {
+    padding-bottom: 3px;
+  }
+
+  .contactForm {
+    justify-content: space-around;
+    padding-bottom: 40px;
+  }
 }
